@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const setupController = require('./controllers/setupController')
+const apiController =  require('./controllers/apiController')
 
 const app = express();
 
@@ -19,7 +20,10 @@ mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true  })
 app.get("/", (req, res) => {
   res.send("<h1>todos-rest-api</h1>");
 });
+
 setupController(app)
+apiController(app)
+
 
 app.listen(port, () => console.log("app is running on port: " + port));
 
